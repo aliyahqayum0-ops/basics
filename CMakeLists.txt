@@ -61,3 +61,10 @@ add_executable(basics
         )
 target_link_libraries(basics
         benchmark::benchmark )
+
+add_executable(linked_list_bench
+        ${CMAKE_SOURCE_DIR}/linked_list_driver.cpp
+        ${CMAKE_SOURCE_DIR}/src/linked_list.cpp
+        )
+target_link_libraries(linked_list_bench
+        benchmark::benchmark )
