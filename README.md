@@ -3,12 +3,12 @@
     To implement the linked list, I created an empty node object which contains a data of 0 and has set the next pointer to Null and an empty LinkedList object with it set     Null. Then to build the list, I created an insertAtHead() function which creates a newNode. The newNode's data is set to the data passed in as a parameter and the next
     pointer of the newNode is set to head while the current head of the list is set to the newNode to indicate the top of the list.
 2. How long does it take to sort the list across different input sizes? (Include a plot supporting this data).
-   (sort_comparison.png)
+   ![Sorting comparison](sort_comparison.png)
 
    As you can see from the plot, at a list size of n=20000 it takes approx 600ms to sort the linked list. At n=10000 we can see it takes approx 100ms and at n=5000, it
    takes just under 100ms. This is because the time complexity of insertion sort (worst case) is O(n^2) due to the nested for loop. 
 3. How did you optimize your code? How much faster is the improved version, and why? (Include a plot supporting this data).
-   (sort_comparison.png)
+   ![Sorting comparison](sort_comparison.png)
 
    To optimize the insertion sort, I created a sortedTail pointer which keeps track of the last node in the sorted part of the linked list. When inserting each new node, I    first check if its data is greater than or equal to the data in sortedTail. If it is, the new node can be added directly to the end of the sorted list without having to    search through the list. Otherwise, the code searches through the sorted list to find the correct position for the new node and inserts it there. This improves the         performance because the original insertion sort has to search through the sorted list each time a new node is inserted. With the optimized version, if the new value        is already larger than the last sorted value, it can be added immediately. This is especially useful when the list is already sorted or nearly sorted, as the optimized     version can sort the list in O(n) time in the best case, compared to O(n²) for the original insertion sort. As we can see, across all n sized linked lists we plotted
    for (n=5000,10000,20000), we measure less than 100ms to sort the linked list via the optimized insertion sort method.
